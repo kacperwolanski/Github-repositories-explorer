@@ -1,7 +1,7 @@
 import React from "react";
-
+import Typography from "@mui/material/Typography";
 const App = () => {
-  return <div>App</div>;
+  return <Typography>app</Typography>;
 };
 
 export default App;
