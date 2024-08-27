@@ -7,7 +7,7 @@ body,
   font-family: "Inter", sans-serif;
   box-sizing: border-box;
   scroll-behavior: smooth !important;
-  height: 100% !important;
+  height: 100vh !important;
   width: 100%;
   overflow-x: hidden;
 }
