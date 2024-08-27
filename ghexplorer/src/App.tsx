@@ -1,7 +1,18 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
+import MainContainer from "./components/MainContainer";
+import { Box } from "@mui/material";
+
 const App = () => {
-  return <Typography>app</Typography>;
+  return (
+    <Box
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      height="100%"
+    >
+      <MainContainer />
+    </Box>
+  );
 };
 
 export default App;
