@@ -9,6 +9,10 @@ const mainContainerStyle = {
   padding: "20px",
   minWidth: "60%",
   minHeight: "60%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "start",
+  alignItems: "center",
 };
 const MainContainer = () => {
   return (
