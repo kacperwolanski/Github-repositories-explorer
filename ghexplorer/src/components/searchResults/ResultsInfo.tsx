@@ -8,7 +8,7 @@ const resultsInfoStyles = {
 };
 const ResultsInfo = () => {
   const { lastSearchedValue } = useAppStore();
-
+  if (!lastSearchedValue) return <></>;
   return (
     <Typography sx={resultsInfoStyles}>
       Showing users for "{lastSearchedValue}"
