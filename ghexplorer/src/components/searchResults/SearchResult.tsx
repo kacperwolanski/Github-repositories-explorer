@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography, Collapse } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
-
 import { theme } from "../../theme/theme";
-import { Repository } from "../../types";
-import UserRepository from "./UserRepository";
 import { useRepositoryFetch } from "../mainContainer/hooks/useRepositoryFetchHook";
+import RepositoriesList from "./RepositoriesList";
 
 interface SearchResultProps {
   username: string;
@@ -19,18 +17,16 @@ const defaultView = {
   backgroundColor: theme.palette.custom.inputGrey,
   padding: 2,
   borderRadius: 1,
+  mt: 2,
 };
 
 const SearchResult = ({ username }: SearchResultProps) => {
   const [expanded, setExpanded] = useState(false);
   const { repositories, loading, handleReposFetch } = useRepositoryFetch();
 
-  const handleToggle = () => {
-    setExpanded(!expanded);
-  };
   const handleUserSelect = () => {
+    setExpanded(!expanded);
     handleReposFetch(username);
-    console.log(repositories, expanded);
   };
 
   return (
@@ -39,28 +35,23 @@ const SearchResult = ({ username }: SearchResultProps) => {
         <Typography color={theme.palette.custom.fontDark} variant="body1">
           {username}
         </Typography>
-        <IconButton
-          style={{
+        <Box
+          sx={{
             color: theme.palette.custom.fontDark,
           }}
-          onClick={handleToggle}
         >
           {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-        </IconButton>
-      </Box>
-
-      {expanded && repositories.length && (
-        <Box mt="2">
-          {repositories.map((repo: Repository) => (
-            <UserRepository
-              key={repo.id}
-              title={repo.name}
-              description={repo.description || "No description available"}
-              stars={repo.stargazers_count}
-            />
-          ))}
         </Box>
-      )}
+      </Box>
+      <Collapse in={expanded}>
+        <Box mt="10px" textAlign="center">
+          {loading ? (
+            <CircularProgress />
+          ) : (
+            <RepositoriesList repositories={repositories} username={username} />
+          )}
+        </Box>
+      </Collapse>
     </>
   );
 };
