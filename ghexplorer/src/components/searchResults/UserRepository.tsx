@@ -11,6 +11,8 @@ const containerStyle = {
   padding: 2,
   marginBottom: 1,
   borderRadius: 1,
+  width: "90%",
+  textAlign: "left",
 };
 
 const titleStyle = {
@@ -30,7 +32,9 @@ const UserRepository = ({
     <Box sx={containerStyle}>
       <Box>
         <Typography sx={titleStyle}>{title}</Typography>
-        <Typography variant="body2">{description}</Typography>
+        <Typography maxWidth="500px" variant="body2">
+          {description}
+        </Typography>
       </Box>
       <Box
         sx={{

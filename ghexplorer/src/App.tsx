@@ -5,10 +5,12 @@ import { Box } from "@mui/material";
 const App = () => {
   return (
     <Box
+      mr="200px"
+      mt="100px"
       display="flex"
       justifyContent="center"
-      alignItems="center"
-      height="100%"
+      minHeight="250px"
+      width="100%"
     >
       <MainContainer />
     </Box>
