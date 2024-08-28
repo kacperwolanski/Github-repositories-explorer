@@ -5,6 +5,7 @@ import SearchButton from "../SearchButton";
 import { theme } from "../../theme/theme";
 import { useUserSearch } from "./hooks/useUserSearchHook";
 import UsersResultsList from "../searchResults/UsersResultsList";
+import LackOfUsersInfo from "./LackOfUsersInfo";
 
 const mainContainerStyle = {
   background: theme.palette.custom.background,
@@ -21,7 +22,10 @@ const MainContainer = () => {
     <Box sx={mainContainerStyle}>
       <UsernameInput />
       <SearchButton onClick={handleSearch} />
-      {loading && <CircularProgress />}
+      <Box mt="10px" textAlign="center">
+        {loading && <CircularProgress />}
+      </Box>
+      <LackOfUsersInfo loading={loading} usersAmount={users.length} />
       {users.length > 0 && !loading && <UsersResultsList users={users} />}
     </Box>
   );
