@@ -26,7 +26,7 @@ const SearchResult = ({ username }: SearchResultProps) => {
 
   const handleUserSelect = () => {
     setExpanded(!expanded);
-    handleReposFetch(username);
+    !expanded && handleReposFetch(username);
   };
 
   return (
