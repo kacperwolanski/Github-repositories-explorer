@@ -10,7 +10,9 @@ import LackOfUsersInfo from "./LackOfUsersInfo";
 const mainContainerStyle = {
   background: theme.palette.custom.background,
   padding: "20px",
-  minWidth: "60%",
+  width: "100%",
+
+  margin: "0 auto",
   display: "flex",
   flexDirection: "column",
 };
