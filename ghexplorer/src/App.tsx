@@ -1,5 +1,5 @@
 import React from "react";
-import MainContainer from "./components/MainContainer";
+import MainContainer from "./components/mainContainer/MainContainer";
 import { Box } from "@mui/material";
 
 const App = () => {
