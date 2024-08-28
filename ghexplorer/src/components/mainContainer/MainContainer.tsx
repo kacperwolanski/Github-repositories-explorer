@@ -11,7 +11,6 @@ const mainContainerStyle = {
   background: theme.palette.custom.background,
   padding: "20px",
   minWidth: "60%",
-
   display: "flex",
   flexDirection: "column",
 };
@@ -21,17 +20,11 @@ const resultsContainerStyle = {
 };
 
 const MainContainer = () => {
-  const { username, setUsername, users, loading, handleSearch } =
-    useUserSearch();
+  const { users, loading, handleSearch } = useUserSearch();
 
   return (
     <Box sx={mainContainerStyle}>
-      <UsernameInput
-        value={username}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setUsername(e.target.value)
-        }
-      />
+      <UsernameInput />
       <SearchButton onClick={handleSearch} />
       {loading && <CircularProgress />}
       {users.length > 0 && !loading && (
