@@ -46,9 +46,8 @@ const UserRepository = ({
         <Typography variant="body2" sx={{ fontWeight: 600, marginRight: 1 }}>
           {stars}
         </Typography>
-        <IconButton>
-          <StarIcon style={{ color: theme.palette.custom.fontDark }} />
-        </IconButton>
+
+        <StarIcon style={{ color: theme.palette.custom.fontDark }} />
       </Box>
     </Box>
   );

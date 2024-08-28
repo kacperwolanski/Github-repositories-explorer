@@ -40,7 +40,11 @@ const SearchResult = ({ username }: SearchResultProps) => {
             color: theme.palette.custom.fontDark,
           }}
         >
-          {expanded ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+          {expanded ? (
+            <ExpandLessIcon sx={{ fontSize: "30px" }} />
+          ) : (
+            <ExpandMoreIcon sx={{ fontSize: "30px" }} />
+          )}
         </Box>
       </Box>
       <Collapse in={expanded}>

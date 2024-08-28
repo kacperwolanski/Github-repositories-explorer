@@ -4,8 +4,7 @@ import UsernameInput from "../UsernameInput";
 import SearchButton from "../SearchButton";
 import { theme } from "../../theme/theme";
 import { useUserSearch } from "./hooks/useUserSearchHook";
-import SearchResult from "../searchResults/SearchResult";
-import { User } from "../../types";
+import UsersResultsList from "../searchResults/UsersResultsList";
 
 const mainContainerStyle = {
   background: theme.palette.custom.background,
@@ -13,10 +12,6 @@ const mainContainerStyle = {
   minWidth: "60%",
   display: "flex",
   flexDirection: "column",
-};
-const resultsContainerStyle = {
-  mt: "30px",
-  width: "100%",
 };
 
 const MainContainer = () => {
@@ -27,13 +22,7 @@ const MainContainer = () => {
       <UsernameInput />
       <SearchButton onClick={handleSearch} />
       {loading && <CircularProgress />}
-      {users.length > 0 && !loading && (
-        <Box sx={resultsContainerStyle}>
-          {users.map((user: User) => (
-            <SearchResult key={user.id} username={user.login} />
-          ))}
-        </Box>
-      )}
+      {users.length > 0 && !loading && <UsersResultsList users={users} />}
     </Box>
   );
 };

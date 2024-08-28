@@ -3,14 +3,19 @@ import TextField from "@mui/material/TextField";
 import { theme } from "../theme/theme";
 import { useAppStore } from "../store/appStore";
 
-const UsernameInput = ({}) => {
-  const { isAbleToSearch, setIsAbleToSearch, userNameInput, setUserNameInput } =
-    useAppStore();
+const UsernameInput = () => {
+  const {
+    lastSearchedValue,
+    setIsAbleToSearch,
+    userNameInput,
+    setUserNameInput,
+  } = useAppStore();
 
   const handleInputChange = (newInput: string) => {
-    if (!isAbleToSearch) setIsAbleToSearch(true);
+    setIsAbleToSearch(newInput !== lastSearchedValue);
     setUserNameInput(newInput);
   };
+
   return (
     <TextField
       fullWidth
