@@ -4,16 +4,14 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 import { theme } from "../../theme/theme";
+import { Repository } from "../../types";
+import UserRepository from "./UserRepository";
+import { useRepositoryFetch } from "../mainContainer/hooks/useRepositoryFetchHook";
 
-interface Props {
+interface SearchResultProps {
   username: string;
 }
 
-const containerStyle = {
-  borderRadius: 1,
-  padding: 2,
-  width: "100%",
-};
 const defaultView = {
   display: "flex",
   justifyContent: "space-between",
@@ -23,16 +21,21 @@ const defaultView = {
   borderRadius: 1,
 };
 
-const SearchResult = ({ username }: Props) => {
+const SearchResult = ({ username }: SearchResultProps) => {
   const [expanded, setExpanded] = useState(false);
+  const { repositories, loading, handleReposFetch } = useRepositoryFetch();
 
   const handleToggle = () => {
     setExpanded(!expanded);
   };
+  const handleUserSelect = () => {
+    handleReposFetch(username);
+    console.log(repositories, expanded);
+  };
 
   return (
-    <Box sx={containerStyle}>
-      <Box sx={defaultView}>
+    <>
+      <Box onClick={handleUserSelect} sx={defaultView}>
         <Typography color={theme.palette.custom.fontDark} variant="body1">
           {username}
         </Typography>
@@ -46,8 +49,19 @@ const SearchResult = ({ username }: Props) => {
         </IconButton>
       </Box>
 
-      {expanded && <Box sx={{ marginTop: 2 }}></Box>}
-    </Box>
+      {expanded && repositories.length && (
+        <Box mt="2">
+          {repositories.map((repo: Repository) => (
+            <UserRepository
+              key={repo.id}
+              title={repo.name}
+              description={repo.description || "No description available"}
+              stars={repo.stargazers_count}
+            />
+          ))}
+        </Box>
+      )}
+    </>
   );
 };
 

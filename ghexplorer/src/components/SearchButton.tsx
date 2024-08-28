@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import { theme } from "../theme/theme";
-
+interface SearchButtonProps {
+  onClick: () => void;
+}
 const buttonStyle = {
   mt: 2,
   height: "50px",
@@ -9,9 +11,15 @@ const buttonStyle = {
   textTransform: "none",
 };
 
-const SearchButton = () => {
+const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
   return (
-    <Button fullWidth variant="contained" color="primary" sx={buttonStyle}>
+    <Button
+      onClick={onClick}
+      fullWidth
+      variant="contained"
+      color="primary"
+      sx={buttonStyle}
+    >
       Search
     </Button>
   );
