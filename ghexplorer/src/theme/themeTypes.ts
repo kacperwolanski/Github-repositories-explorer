@@ -16,10 +16,16 @@ declare module "@mui/material/styles" {
       background: string;
       inputGrey: string;
       fontDark: string;
+      fontGrey: string;
     };
   }
 
   interface PaletteOptions {
-    custom: { background: string; inputGrey: string; fontDark: string };
+    custom: {
+      background: string;
+      inputGrey: string;
+      fontDark: string;
+      fontGrey: string;
+    };
   }
 }

@@ -13,11 +13,17 @@ const buttonStyle = {
 };
 
 const SearchButton: React.FC<SearchButtonProps> = ({ onClick }) => {
-  const { isAbleToSearch, setIsAbleToSearch } = useAppStore();
-  const { userNameInput } = useAppStore();
+  const {
+    userNameInput,
+    isAbleToSearch,
+    setIsAbleToSearch,
+    setLastSearchedValue,
+  } = useAppStore();
+
   const handleButtonClick = () => {
     onClick();
     setIsAbleToSearch(false);
+    setLastSearchedValue(userNameInput);
   };
   const buttonIsDisabled = !isAbleToSearch || !userNameInput;
   return (
